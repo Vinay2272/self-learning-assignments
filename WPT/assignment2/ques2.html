@@ -1,0 +1,18 @@
+<button onclick="loadScore()">Load Score</button>
+<div id="output"></div>
+
+<script>
+function loadScore() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "score.json", true);
+
+    xhr.onload = function() {
+        let data = JSON.parse(this.responseText);
+        document.getElementById("output").innerHTML =
+            data.match + "<br>" +
+            "India: " + data.score.India.runs + "/" + data.score.India.wickets;
+    };
+
+    xhr.send();
+}
+</script>

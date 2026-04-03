@@ -1,0 +1,15 @@
+{
+  "match": "India vs Australia",
+  "score": {
+    "India": {
+      "runs": 250,
+      "wickets": 6,
+      "overs": 50
+    },
+    "Australia": {
+      "runs": 200,
+      "wickets": 8,
+      "overs": 50
+    }
+  }
+}

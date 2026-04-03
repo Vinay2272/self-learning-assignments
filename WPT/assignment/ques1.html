@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<p>First Paragraph</p>
+<p>Second Paragraph</p>
+<p>Third Paragraph</p>
+
+<button id="btn">Get First Element</button>
+
+<script>
+$("#btn").click(function() {
+    let first = $("p").first();
+    alert(first.text());
+});
+</script>
+
+</body>
+</html>

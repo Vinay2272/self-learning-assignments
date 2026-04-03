@@ -1,0 +1,57 @@
+<button onclick="loadScore()">Load Score</button>
+<div id="output"></div>
+
+<script>
+function loadScore() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "score.json", true);
+
+    xhr.onload = function() {
+        let data = JSON.parse(this.responseText);
+        document.getElementById("output").innerHTML =
+            data.match + "<br>" +
+            "India: " + data.score.India.runs + "/" + data.score.India.wickets;
+    };
+
+    xhr.send();
+}
+</script><!DOCTYPE html>
+<html>
+<head>
+    <title>Live Scoreboard</title>
+</head>
+<body>
+
+<h2>Live Cricket Score</h2>
+<button onclick="loadScore()">Load Score</button>
+
+<div id="result"></div>
+
+<script>
+function loadScore() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+
+            let output = "<h3>" + data.match.team1 + " vs " + data.match.team2 + "</h3>";
+            output += "<p>Venue: " + data.match.venue + "</p>";
+
+            for(let i=0;i<data.scoreboard.length;i++){
+                let temp = data.scoreboard[i];
+
+                output += "<p>" + temp.team+ ":" +temp.runs+ "/" +temp.wickets+ "Overs :" +temp.oversPlayed+ "</p>";
+            }
+
+            document.getElementById("result").innerHTML = output;
+        }
+    };
+
+    xhttp.open("GET", "scoreboard.json", true);
+    xhttp.send();
+}
+</script>
+
+</body>
+</html>

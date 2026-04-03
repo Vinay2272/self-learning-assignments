@@ -1,0 +1,17 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<button onclick="loadNews()">Load News</button>
+<ul id="news"></ul>
+
+<script>
+function loadNews() {
+    axios.get("https://jsonplaceholder.typicode.com/posts")
+    .then(function(res) {
+        let output = "";
+        res.data.slice(0,5).forEach(item => {
+            output += "<li>" + item.title + "</li>";
+        });
+        document.getElementById("news").innerHTML = output;
+    });
+}
+</script>
